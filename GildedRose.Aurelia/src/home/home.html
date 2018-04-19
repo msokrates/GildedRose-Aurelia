@@ -13,8 +13,21 @@
       <complex-rules></complex-rules>
     </div>
   </div>
-  <div class="card col-4 pl-0 pr-0 m-2 shadow">
-      <div class="card-header">New features</div>
-      <new-features></new-features>
+  <div class="d-flex flex-direction-row">
+    <div class="card col-4 pl-0 pr-0 m-2 shadow">
+        <div class="card-header">New features</div>
+        <new-features></new-features>
     </div>
+    <div class="card col-4 pl-0 pr-0 m-2 shadow">
+      <div class="card-body">
+          <h1 class="text-center">Day ${day}</h1>
+      </div>
+      <div class="card-body">
+        <!-- todo build the time travel contraption -->
+      </div>
+      <div class="card-footer text-center">
+        <button type="button" class="btn btn-info" click.delegate="goToNextDay()">Go to next day</button>
+      </div>
+    </div>
+  </div>
 </template>
