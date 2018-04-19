@@ -109,6 +109,7 @@ module.exports = ({production, server, extractCss, coverage} = {}) => ({
         title, server, baseUrl
       }
     }),
+    new CopyWebpackPlugin([{ from: 'assets', to: 'assets' }]),
     ...when(extractCss, new ExtractTextPlugin({
       filename: production ? '[contenthash].css' : '[id].css',
       allChunks: true
