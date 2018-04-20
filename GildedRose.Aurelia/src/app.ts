@@ -8,7 +8,8 @@ export class App {
     let self = this;
     config.title = "Gilded Rose Kata"
     config.map([
-      { route: '', moduleId: PLATFORM.moduleName("./home/home"), name: 'home', title: 'Home' }
+      { route: '', moduleId: PLATFORM.moduleName("./home/home"), name: 'home', title: 'Home' },
+      { route: 'step1', moduleId: PLATFORM.moduleName("./instructions/step1"), name: 'step1', title: 'Step 1' }
     ]);
 
     config.mapUnknownRoutes({ route: '', moduleId: PLATFORM.moduleName("./home/home"), name:'home', title: 'Home' });
