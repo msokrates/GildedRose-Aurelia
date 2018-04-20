@@ -21,4 +21,20 @@
       </div>
     </div>
   </div>
+
+  <div class="card pl-0 pr-0 m-2 shadow">
+    <div class="card-header">Testing in depth</div>
+    <div class="card-body">
+      <p>Scenarios are written using gherkin style feature files. I've created the first one for you located in the directory: <strong>test/features/shop</strong></p>
+      <p>Each feature file has a backing <strong>feature.ts</strong> file. This is where the feature files translate into code.</p>
+      <p>The feature.ts file should abstract the steps away into their own steps files such as shop.steps.ts or navigation.steps.ts</p>
+      <p>There are two test hooks we write callbacks for, the <strong>beforeEach</strong> and <strong>afterEach</strong> hooks.</p>
+      <p>Here we can setup the IoC configuration for our tests and any mocking/faking that might be required.</p>
+      <p>To assist in the IoC configuration. I have created a helper class called <strong>ioc-helper.ts</strong>. There are two functions we use, <strong>register</strong> and <strong>unregister</strong></p>
+      <p>I've also created a <strong>SpecsContainer</strong> class that contains a static instance of the aurelia DI container. This enables us control over the IoC configuration</p>
+      <p>In the <strong>beforeEach</strong> test hook we register our IoC configuration and in the <strong>afterEach</strong> test hook we unregister our IoC. This ensures isolation between tests</p>
+      <p>We want to fake classes that make external calls to our application. For example we can fake http responses from a http client to fake data coming back from a server.</p>
+      <p>We can then register the fake class to be returned instead of the real version using the <strong>register</strong> function on the ioc-helper</p>
+    </div>
+  </div>
 </template>
