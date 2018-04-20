@@ -18,4 +18,10 @@ defineFeature(feature, test => {
     shopSteps.whenWeGoToNextDay(when);
     shopSteps.thenTheCurrentDayIs(then);
   });
+
+  test('A typical item degrades at the end of the day', ({given, when, then}) => {
+    shopSteps.givenWeHaveTheFollowingItems(given);
+    shopSteps.whenWeGoToNextDay(when);
+    shopSteps.thenIShouldHaveTheFollowingItems(then);
+  });
 });
