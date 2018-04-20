@@ -13,7 +13,8 @@
     "aurelia-bootstrapper": "^2.1.1",
     "aurelia-polyfills": "latest",
     "bluebird": "^3.4.1",
-    "bootstrap": "^4.1.0"
+    "bootstrap": "^4.1.0",
+    "jest-cucumber": "^1.0.3"
   },
   "peerDependencies": {},
   "devDependencies": {
@@ -23,7 +24,7 @@
     "@types/webpack": "^3.0.4",
     "aurelia-cli": "^0.32.0",
     "aurelia-loader-nodejs": "^1.0.1",
-    "aurelia-pal-nodejs": "1.0.0-beta.2.0.0",
+    "aurelia-pal-nodejs": "1.0.0-beta.3.3.0",
     "aurelia-testing": "^1.0.0-beta.3.0.1",
     "aurelia-tools": "^1.0.0",
     "aurelia-webpack-plugin": "^2.0.0-rc.4",
@@ -73,7 +74,9 @@
     "transform": {
       "^.+\\.(ts|tsx)$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
     },
-    "testRegex": "\\.spec\\.(ts|js)x?$",
+    "testMatch": [
+      "**/*.feature.ts"
+    ],
     "setupFiles": [
       "<rootDir>/test/jest-pretest.ts"
     ],
@@ -86,7 +89,10 @@
       "src/**/*.{js,ts}",
       "!**/*.spec.{js,ts}",
       "!**/node_modules/**",
-      "!**/test/**"
+      "!**/test/**",
+      "!src/environment.ts",
+      "!src/main.ts",
+      "!src/resources/index.ts"
     ],
     "coverageDirectory": "<rootDir>/test/coverage-jest",
     "coverageReporters": [
