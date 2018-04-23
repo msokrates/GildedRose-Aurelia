@@ -20,7 +20,7 @@
           <th>Quality</th>
         </thead>
         <tbody>
-          <tr repeat.for="item of items">
+          <tr repeat.for="item of state.present.shopItems">
             <td>${item.name}</td>
             <td>${item.sellIn}</td>
             <td>${item.quality}</td>
@@ -37,7 +37,7 @@
     </div>
     <div class="card col-4 pl-0 pr-0 m-2 shadow">
       <div class="card-body">
-          <h1 class="text-center">Day ${day}</h1>
+          <h1 class="text-center">Day ${state.present.days}</h1>
       </div>
       <div class="card-body">
         <!-- todo build the time travel contraption -->
