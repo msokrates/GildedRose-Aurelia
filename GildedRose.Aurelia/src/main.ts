@@ -40,6 +40,6 @@ export function configure(aurelia: Aurelia) {
   initialState.shopItems.push(new Item("Conjured Mana Cake", 3, 6));
   initialState.days = 1;
 
-  aurelia.use.plugin(PLATFORM.moduleName('aurelia-store'), { initialState, history: { undoable: true } });
+  aurelia.use.plugin(PLATFORM.moduleName('aurelia-store'), { initialState, history: { undoable: true, limit: 20 } });
   aurelia.start().then(() => aurelia.setRoot(PLATFORM.moduleName('app')));
 }

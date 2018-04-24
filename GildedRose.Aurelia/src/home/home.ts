@@ -1,23 +1,24 @@
 import { autoinject, bindable } from 'aurelia-framework';
 import { Item } from "models/item";
-import { Store, connectTo, StateHistory, nextStateHistory } from "aurelia-store";
+import { Store, connectTo, StateHistory, nextStateHistory, jump } from "aurelia-store";
 import { State } from 'state';
 
-const updateItemsAction = (state: StateHistory<State>) => {
-  return nextStateHistory(state, Object.assign({}, state, {
-    shopItems: updateItems(state.present.shopItems),
-    days: state.present.days
-  }));
+const updateItemsAction = (currentState: StateHistory<State>) => {
+  let updatedState = Object.assign({}, currentState.present);
+  updatedState.shopItems = currentState.present.shopItems.map(item => Object.assign({}, item));
+  updateItems(updatedState.shopItems);
+
+  return nextStateHistory(currentState, updatedState);
 };
 
 const updateDaysAction = (state: StateHistory<State>) => {
-  return nextStateHistory(state, Object.assign({}, state, {
-    days: state.present.days + 1,
-    shopItems: state.present.shopItems
-  }));
+  let updatedState = Object.assign({}, state.present);
+  updatedState.days++;
+
+  return nextStateHistory(state, updatedState);
 };
 
-const updateItems = (items) : Item[] => {
+const updateItems = (items) => {
   for (var i = 0; i < items.length; i++)
   {
     if (items[i].name != "Aged Brie" && items[i].name != "Backstage passes to a TAFKAL80ETC concert")
@@ -90,8 +91,6 @@ const updateItems = (items) : Item[] => {
       }
     }
   }
-
-  return items;
 }
 
 @autoinject()
@@ -99,13 +98,20 @@ export class Home {
    public state: StateHistory<State>;
 
   constructor(private store: Store<StateHistory<State>>) {
-    this.store.state.subscribe(state => this.state = state);
+    this.store.state.subscribe(state => {
+      this.state = state
+    });
     this.store.registerAction("UpdateItemsAction", updateItemsAction);
     this.store.registerAction("UpdateDaysAction", updateDaysAction);
   }
 
-  goToNextDay() {
+  goToNextDay() {    
     this.store.dispatch(updateItemsAction);
     this.store.dispatch(updateDaysAction);
+  }
+
+  travelBackInTime() {
+    this.store.dispatch(jump, -1);
+    this.store.dispatch(jump, -1);
   }
 }
