@@ -2,6 +2,7 @@
   <require from="resources/elements/intro-and-rules.html"></require>
   <require from="resources/elements/complex-rules.html"></require>
   <require from="resources/elements/new-features.html"></require>
+  <require from="./components/shop-items"></require>
 
   <div class="d-flex flex-direction-row pr-5">
     <div class="card col-4 pl-0 pr-0 m-2 shadow">
@@ -13,20 +14,7 @@
       <complex-rules></complex-rules>
     </div>
     <div class="card col-4 pl-0 pr-0 m-2 shadow">
-      <table class="table">
-        <thead>
-          <th>Name</th>
-          <th>SellIn</th>
-          <th>Quality</th>
-        </thead>
-        <tbody>
-          <tr repeat.for="item of state.present.shopItems">
-            <td>${item.name}</td>
-            <td>${item.sellIn}</td>
-            <td>${item.quality}</td>
-          </tr>
-        </tbody>
-      </table>
+      <shop-items items.bind="state.present.shopItems"></shop-items>
     </div>
   </div>
 
@@ -38,10 +26,6 @@
     <div class="card col-4 pl-0 pr-0 m-2 shadow">
       <div class="card-body">
           <h1 class="text-center">Day ${state.present.days}</h1>
-      </div>
-      <div class="card-body">
-        <!-- todo build the time travel contraption -->
-
       </div>
       <div class="card-footer d-flex justify-content-between">
         <button type="button" class="btn btn-danger" click.delegate="travelBackInTime()">Travel back in time</button>

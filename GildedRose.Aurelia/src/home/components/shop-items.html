@@ -1,0 +1,14 @@
+<template>
+  <require from="./shop-item"></require>
+
+  <table class="table">
+    <thead>
+      <th>Name</th>
+      <th>SellIn</th>
+      <th>Quality</th>
+    </thead>
+    <tbody>
+      <tr as-element="shop-item" repeat.for="item of items" item.bind="item"></tr>
+    </tbody>
+  </table>
+</template>

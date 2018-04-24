@@ -4,18 +4,18 @@ import { Store, connectTo, StateHistory, nextStateHistory, jump } from "aurelia-
 import { State } from 'state';
 
 const updateItemsAction = (currentState: StateHistory<State>) => {
-  let updatedState = Object.assign({}, currentState.present);
-  updatedState.shopItems = currentState.present.shopItems.map(item => Object.assign({}, item));
+  let updatedState = {...currentState.present}
+  updatedState.shopItems = currentState.present.shopItems.map(item => { return {...item }});
   updateItems(updatedState.shopItems);
 
   return nextStateHistory(currentState, updatedState);
 };
 
-const updateDaysAction = (state: StateHistory<State>) => {
-  let updatedState = Object.assign({}, state.present);
+const updateDaysAction = (currentState: StateHistory<State>) => {
+  let updatedState = {...currentState.present}
   updatedState.days++;
 
-  return nextStateHistory(state, updatedState);
+  return nextStateHistory(currentState, updatedState);
 };
 
 const updateItems = (items) => {
