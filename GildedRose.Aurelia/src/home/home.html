@@ -3,6 +3,7 @@
   <require from="resources/elements/complex-rules.html"></require>
   <require from="resources/elements/new-features.html"></require>
   <require from="./components/shop-items"></require>
+  <require from="./components/days-element"></require>
 
   <div class="d-flex flex-direction-row pr-5">
     <div class="card col-4 pl-0 pr-0 m-2 shadow">
@@ -23,14 +24,6 @@
         <div class="card-header">New features - What you need to do (click help for more info):</div>
         <new-features></new-features>
     </div>
-    <div class="card col-4 pl-0 pr-0 m-2 shadow">
-      <div class="card-body">
-          <h1 class="text-center">Day ${state.present.days}</h1>
-      </div>
-      <div class="card-footer d-flex justify-content-between">
-        <button type="button" class="btn btn-danger" click.delegate="travelBackInTime()">Travel back in time</button>
-        <button type="button" class="btn btn-info" click.delegate="goToNextDay()">Go to next day</button>
-      </div>
-    </div>
+    <div class="card col-4 pl-0 pr-0 m-2 shadow" as-element="days-element" days.bind="state.present.days"></div> 
   </div>
 </template>
