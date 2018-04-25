@@ -1,6 +1,6 @@
-import { defineFeature, loadFeature } from 'jest-cucumber';
-import * as shopSteps from './shop.steps';
+import { loadFeature, defineFeature } from 'jest-cucumber';
 import * as iocHelper from '../../ioc-helper';
+import * as shopSteps from './shop.steps';
 
 const feature = loadFeature('test/features/shop/updatingShopInventory.feature');
 
