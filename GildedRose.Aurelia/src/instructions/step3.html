@@ -1,0 +1,73 @@
+<template>
+  <require from="resources/elements/support-conjured-steps.html"></require>
+  <require from="resources/elements/conjured-rule.html"></require>
+
+  <div class="d-flex flex-direction-row pr-5">
+    <div class="card col-4 pl-0 pr-0 m-2 shadow">
+      <div class="card-header">Time Travellers</div>
+      <div class="card-body">
+        <p>To achieve time travelling skills one needs to use the package named 'aurelia-store'. One can add it with 'yarn add aurelia-store'. Once installed we must now follow the redux way and follow their three golden principles:</p>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item d-flex justify-content-start align-items-center">
+            <i class="fas fa-beer mr-3"></i> 
+            <span class="text-left"><strong>Single source of truth:</strong> The state of your whole application is stored in an object tree within a single store.</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-start align-items-center">
+            <i class="fas fa-beer mr-3"></i>
+            <span class="text-left"><strong>State is read-only:</strong> The only way to change the state is to emit an action, an object describing what happened.</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-start align-items-center">
+            <i class="fas fa-beer mr-3"></i>
+            <span class="text-left"><strong>Changes are made with pure functions:</strong> To specify how the state tree is transformed by actions, you write pure reducers.</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="card col-4 pl-0 pr-0 m-2 shadow">
+      <div class="card-header">Repeatable Steps</div>
+      <div class="card-body">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item d-flex justify-content-start align-items-center">
+            <h3 class="mr-4">1</h3>
+            <span class="text-left"><strong>Given steps</strong> dispatch action to create test state</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-start align-items-center">
+            <h3 class="mr-4">2</h3>
+            <span class="text-left"><strong>When steps</strong> call component containing method the user interacts with</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-start align-items-center">
+            <h3 class="mr-4">3</h3>
+            <span class="text-left"><strong>Then steps</strong> assert that the state has been updated accordingly</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-start align-items-center">
+              <h3 class="mr-4">4</h3>
+              <span class="text-left">Improve the codebase</span>
+            </li>
+        </ul>
+      </div>
+    </div>
+    <div class="card col-4 pl-0 pr-0 m-2 shadow d-flex flex-direction-column justify-space-between">
+      <div class="card-body text-center">
+        <a route-href="home">
+          <button type="button" class="btn btn-info" >
+            Go back to kata!
+          </button>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="card pl-0 pr-0 m-2 shadow">
+    <div class="card-header">How to integrate aurelia-store</div>
+    <div class="card-body">
+      <p>Follow the setup here: <a href="https://github.com/zewa666/aurelia-store">https://github.com/zewa666/aurelia-store</a></p>
+      <p>Tell aurelia to use the aurelia-store plugin. We want a store that can contain history.</p>
+      <p>We want to create initial state to give to the store. We can use our current shop items setup. And set days to 1</p>
+      <p>In our shell view model, currently Home, we can inject the store and subscribe to state changes. This will propagate through the site when changes are made to the state.</p>
+      <p>We can now bind the relevant bits of the state into our individual components. For example the days component will bind to the days property on the state.</p>
+      <p>When we want to change state we have to dispatch an action on the store. The action is a function that copies the existing state, modifies it and then returns it.</p>
+      <p>In our tests we need to create a test Store and give it initial state</p>
+      <p>We will create test actions that we can dispatch to set up state. These will need to be registered in our store.</p>
+      <p>We can use async/await to ensure state has been properly applied before going to the Then steps and asserting the state against expected values</p>
+    </div>
+  </div>
+</template>
